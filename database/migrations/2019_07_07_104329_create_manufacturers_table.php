@@ -13,7 +13,7 @@ class CreateManufacturersTable extends Migration
      */
     public function up()
     {
-        Schema::create('manufacturers', function (Blueprint $table) {
+        Schema::create('manufacturer', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('brand');
             $table->string('name');
@@ -34,6 +34,6 @@ class CreateManufacturersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manufacturers');
+        Schema::dropIfExists('manufacturer');
     }
 }

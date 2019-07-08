@@ -14,7 +14,8 @@ class ManufacturerController extends Controller
      */
     public function index()
     {
-        //
+        $manufacturer = manufacturer::orderby('id', 'desc')->get();
+        return View('manufacturer.index',['manufacturer'=>$manufacturer]);
     }
 
     /**
@@ -24,62 +25,79 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-        //
+        return view('manufacturer.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\manufacturer  $manufacturer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(manufacturer $manufacturer)
-    {
-        //
+        manufacturer::create([
+            'brand' => $request['brand'],
+            'name' => $request['name'],
+            'realm' => $request['realm'],
+            'products' => $request['products'],
+            'mobile' => $request['mobile'],
+            'phone' => $request['phone'],
+            'size' => $request['size'],
+            'description' => $request['desc'],
+
+        ]);
+
+        return redirect('manufacturer.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\manufacturer  $manufacturer
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(manufacturer $manufacturer)
+    public function edit($id)
     {
-        //
+
+        $manufacturer = manufacturer::find($id);
+        return View('manufacturer.edit', ['manufacturer' => $manufacturer]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\manufacturer  $manufacturer
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, manufacturer $manufacturer)
+    public function update(Request $request, $id)
     {
-        //
+        $manufacturer = manufacturer::find($id);
+        $manufacturer->update([
+            'brand' => $request['brand'],
+            'name' => $request['name'],
+            'realm' => $request['realm'],
+            'products' => $request['products'],
+            'mobile' => $request['mobile'],
+            'phone' => $request['phone'],
+            'size' => $request['size'],
+            'description' => $request['desc'],
+        ]);
+        return redirect('manufacturer.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\manufacturer  $manufacturer
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(manufacturer $manufacturer)
+    public function destroy($id)
     {
-        //
+        manufacturer::find($id)->delete();
+        return redirect('manufacturer.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
     }
 }

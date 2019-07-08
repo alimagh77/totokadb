@@ -14,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = product::orderby('id', 'desc')->get();
+        return View('product.index',['product'=>$product]);
     }
 
     /**
@@ -24,62 +25,75 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(product $product)
-    {
-        //
+        product::create([
+            'category' => $request['category'],
+            'categoryDetails' => $request['categoryDetails'],
+            'manufacturer' => $request['manufacturer'],
+            'details' => $request['details'],
+            'color' => $request['color'],
+            'description' => $request['desc'],
+
+        ]);
+
+        return redirect('product.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\product  $product
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(product $product)
+    public function edit($id)
     {
-        //
+
+        $product = product::find($id);
+        return View('product.edit', ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\product  $product
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request, $id)
     {
-        //
+        $product = product::find($id);
+        $product->update([
+            'category' => $request['category'],
+            'categoryDetails' => $request['categoryDetails'],
+            'manufacturer' => $request['manufacturer'],
+            'details' => $request['details'],
+            'color' => $request['color'],
+            'description' => $request['desc'],
+        ]);
+        return redirect('product.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\product  $product
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy($id)
     {
-        //
+        product::find($id)->delete();
+        return redirect('product.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
     }
 }

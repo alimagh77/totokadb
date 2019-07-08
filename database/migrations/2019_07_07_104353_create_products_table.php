@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('category');
             $table->string('categoryDetails');
-            $table->text('manufacturers');
+            $table->text('manufacturer');
             $table->text('details');
             $table->text('color');
             $table->text('description');

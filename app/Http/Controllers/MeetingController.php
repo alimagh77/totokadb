@@ -14,7 +14,8 @@ class MeetingController extends Controller
      */
     public function index()
     {
-        //
+        $meeting = meeting::orderby('id', 'desc')->get();
+        return View('meeting.index',['meeting'=>$meeting]);
     }
 
     /**
@@ -24,62 +25,73 @@ class MeetingController extends Controller
      */
     public function create()
     {
-        //
+        return view('meeting.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\meeting  $meeting
-     * @return \Illuminate\Http\Response
-     */
-    public function show(meeting $meeting)
-    {
-        //
+        meeting::create([
+            'topic' => $request['topic'],
+            'keyPoints' => $request['birth'],
+            'data' => $request['date'],
+            'members' => $request['members'],
+            'description' => $request['desc'],
+
+        ]);
+
+        return redirect('meeting.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\meeting  $meeting
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(meeting $meeting)
+    public function edit($id)
     {
-        //
+
+        $meeting = meeting::find($id);
+        return View('meeting.edit', ['meeting' => $meeting]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\meeting  $meeting
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, meeting $meeting)
+    public function update(Request $request, $id)
     {
-        //
+        $meeting = meeting::find($id);
+        $meeting->update([
+            'topic' => $request['topic'],
+            'keyPoints' => $request['birth'],
+            'data' => $request['date'],
+            'members' => $request['members'],
+            'description' => $request['desc'],
+        ]);
+        return redirect('meeting.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\meeting  $meeting
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(meeting $meeting)
+    public function destroy($id)
     {
-        //
+        meeting::find($id)->delete();
+        return redirect('meeting.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
     }
 }
