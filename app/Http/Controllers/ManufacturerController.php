@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\manufacturer;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+
 
 class ManufacturerController extends Controller
 {
@@ -98,6 +100,14 @@ class ManufacturerController extends Controller
     {
         manufacturer::find($id)->delete();
         return redirect('manufacturer.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
+    }
+
+    public function getData()
+
+    {
+
+        return Datatables::of(manufacturer::query())->make(true);
 
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\company;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+
 
 class CompanyController extends Controller
 {
@@ -15,7 +17,7 @@ class CompanyController extends Controller
     public function index()
     {
         $company = company::orderby('id', 'desc')->get();
-        return View('company.index',['company'=>company]);
+        return View('company.index',['company'=>$company]);
     }
 
     /**
@@ -105,6 +107,15 @@ class CompanyController extends Controller
     {
         company::find($id)->delete();
         return redirect('company.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
+    }
+
+
+    public function getData()
+
+    {
+
+        return Datatables::of(company::query())->make(true);
 
     }
 }

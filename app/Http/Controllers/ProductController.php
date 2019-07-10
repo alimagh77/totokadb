@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\product;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class ProductController extends Controller
 {
@@ -40,14 +41,14 @@ class ProductController extends Controller
         product::create([
             'category' => $request['category'],
             'categoryDetails' => $request['categoryDetails'],
-            'manufacturer' => $request['manufacturer'],
+            'manufacturers' => $request['manufacturer'],
             'details' => $request['details'],
             'color' => $request['color'],
             'description' => $request['desc'],
 
         ]);
 
-        return redirect('product.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return redirect('product.index')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -76,7 +77,7 @@ class ProductController extends Controller
         $product->update([
             'category' => $request['category'],
             'categoryDetails' => $request['categoryDetails'],
-            'manufacturer' => $request['manufacturer'],
+            'manufacturers' => $request['manufacturer'],
             'details' => $request['details'],
             'color' => $request['color'],
             'description' => $request['desc'],
@@ -94,6 +95,14 @@ class ProductController extends Controller
     {
         product::find($id)->delete();
         return redirect('product.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
+    }
+
+    public function getData()
+
+    {
+
+        return Datatables::of(product::query())->make(true);
 
     }
 }

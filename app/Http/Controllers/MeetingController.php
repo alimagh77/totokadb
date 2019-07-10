@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\meeting;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+
 
 class MeetingController extends Controller
 {
@@ -40,7 +42,7 @@ class MeetingController extends Controller
         meeting::create([
             'topic' => $request['topic'],
             'keyPoints' => $request['birth'],
-            'data' => $request['date'],
+            'date' => $request['date'],
             'members' => $request['members'],
             'description' => $request['desc'],
 
@@ -74,7 +76,7 @@ class MeetingController extends Controller
         $meeting = meeting::find($id);
         $meeting->update([
             'topic' => $request['topic'],
-            'keyPoints' => $request['birth'],
+            'keyPoints' => $request['key'],
             'data' => $request['date'],
             'members' => $request['members'],
             'description' => $request['desc'],
@@ -92,6 +94,14 @@ class MeetingController extends Controller
     {
         meeting::find($id)->delete();
         return redirect('meeting.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
+    }
+
+    public function getData()
+
+    {
+
+        return Datatables::of(meeting::query())->make(true);
 
     }
 }

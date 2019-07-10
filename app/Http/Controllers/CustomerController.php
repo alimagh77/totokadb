@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\customer;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+
 
 class CustomerController extends Controller
 {
@@ -96,6 +98,14 @@ class CustomerController extends Controller
     {
         customer::find($id)->delete();
         return redirect('customer.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+
+    }
+
+    public function getData()
+
+    {
+
+        return Datatables::of(customer::query())->make(true);
 
     }
 }
