@@ -41,7 +41,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'website', name: 'website' },
                 { data: 'realm', name: 'realm' },
-                { data: 'edit', name: 'realm' },
+                { data: 'edit', name: 'realm',"searchable":false },
             ]
         });
     });

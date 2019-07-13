@@ -41,7 +41,7 @@
                 { data: 'brand', name: 'brand' },
                 { data: 'realm', name: 'realm' },
                 { data: 'phone', name: 'phone' },
-                { data: 'edit', name: 'edit' },
+                { data: 'edit', name: 'edit',"searchable":false },
             ]
         });
     });

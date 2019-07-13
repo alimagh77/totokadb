@@ -41,7 +41,7 @@
                 { data: 'category', name: 'category' },
                 { data: 'color', name: 'color' },
                 { data: 'manufacturers', name: 'manufacturers' },
-                { data: 'edit', name: 'edit' },
+                { data: 'edit', name: 'edit',"searchable":false },
 
             ]
         });

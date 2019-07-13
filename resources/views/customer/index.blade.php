@@ -41,7 +41,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'job', name: 'job' },
                 { data: 'mobile', name: 'mobile' },
-                { data: 'edit', name: 'edit' },
+                { data: 'edit', name: 'edit',"searchable":false },
             ]
         });
     });

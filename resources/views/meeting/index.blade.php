@@ -24,6 +24,7 @@
             <th>Id</th>
             <th>موضوع</th>
             <th>اعضا</th>
+            <th>ویرایش</th>
 
         </tr>
         </thead>
@@ -39,6 +40,7 @@
                 { data: 'id', name: 'id' },
                 { data: 'topic', name: 'topic' },
                 { data: 'members', name: 'members' },
+                { data: 'edit', name: 'edit', "searchable":false },
 
             ]
         });
