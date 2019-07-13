@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{url('/product/edit/{id}',['id'=>$product->id])}}" class="form" method="post">
+    <form action="{{route('editProduct',$product->id)}}" class="form" method="post">
         @csrf
         <div class="card-body">
             <div class="card-block">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{url('/meeting/edit/{id}',['id'=>$meeting->id])}}" class="form" method="post">
+    <form action="{{route('editMeeting',$meeting->id)}}" class="form" method="post">
         @csrf
         <div class="card-body">
             <div class="card-block">
