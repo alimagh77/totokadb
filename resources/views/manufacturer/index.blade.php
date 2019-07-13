@@ -10,6 +10,13 @@
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <a class="btn btn-info btn-sm" href="/manufacturer/create" >ایجاد تولیدکننده</a>
+        <a class="btn btn-info btn-sm" href="/" >خانه</a>
+
+    </div>
+</div>
+<div class="container">
     <h2>تولیدی ها</h2>
     <table class="table table-bordered" id="table">
         <thead>
@@ -18,6 +25,7 @@
             <th>نام برند</th>
             <th>حوزه کاری</th>
             <th>تلفن</th>
+            <th>ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -33,6 +41,7 @@
                 { data: 'brand', name: 'brand' },
                 { data: 'realm', name: 'realm' },
                 { data: 'phone', name: 'phone' },
+                { data: 'edit', name: 'edit' },
             ]
         });
     });

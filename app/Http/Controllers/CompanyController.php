@@ -49,7 +49,7 @@ class CompanyController extends Controller
 
         ]);
 
-        return redirect('company.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return redirect('/company')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -94,7 +94,7 @@ class CompanyController extends Controller
             'website'=>$request['web'],
             'description'=>$request['desc'],
         ]);
-        return redirect('company.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
+        return redirect('/company')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -106,7 +106,7 @@ class CompanyController extends Controller
     public function destroy($id)
     {
         company::find($id)->delete();
-        return redirect('company.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+        return redirect('/company')->with('success', 'مطلب شما با موفقیت حذف شد');
 
     }
 
@@ -115,7 +115,10 @@ class CompanyController extends Controller
 
     {
 
-        return Datatables::of(company::query())->make(true);
+        return Datatables::of(company::query())
+            ->editColumn('edit', 'datatable.editCompany')
+            ->rawColumns(['edit', 'edit'])
+            ->make(true);
 
     }
 }

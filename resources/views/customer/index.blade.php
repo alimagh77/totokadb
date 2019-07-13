@@ -10,6 +10,13 @@
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <a class="btn btn-info btn-sm" href="/customer/create" >ایجاد مشتری</a>
+        <a class="btn btn-info btn-sm" href="/" >خانه</a>
+
+    </div>
+</div>
+<div class="container">
     <h2>مشتریان</h2>
     <table class="table table-bordered" id="table">
         <thead>
@@ -18,6 +25,7 @@
             <th>نام</th>
             <th>صنف</th>
             <th>تلفن همراه</th>
+            <th>ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -33,6 +41,7 @@
                 { data: 'name', name: 'name' },
                 { data: 'job', name: 'job' },
                 { data: 'mobile', name: 'mobile' },
+                { data: 'edit', name: 'edit' },
             ]
         });
     });

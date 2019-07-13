@@ -48,7 +48,7 @@ class ProductController extends Controller
 
         ]);
 
-        return redirect('product.index')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return view('product.index')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -82,7 +82,7 @@ class ProductController extends Controller
             'color' => $request['color'],
             'description' => $request['desc'],
         ]);
-        return redirect('product.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
+        return redirect('/product')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -94,7 +94,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         product::find($id)->delete();
-        return redirect('product.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+        return redirect('/product')->with('success', 'مطلب شما با موفقیت حذف شد');
 
     }
 
@@ -102,7 +102,11 @@ class ProductController extends Controller
 
     {
 
-        return Datatables::of(product::query())->make(true);
+        return Datatables::of(product::query())
+            ->editColumn('edit', 'datatable.editProduct')
+            ->rawColumns(['edit', 'edit'])
+
+            ->make(true);
 
     }
 }

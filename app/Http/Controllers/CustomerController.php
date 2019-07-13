@@ -50,7 +50,7 @@ class CustomerController extends Controller
 
         ]);
 
-        return redirect('customer.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return redirect('/customer')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -85,7 +85,7 @@ class CustomerController extends Controller
             'job' => $request['job'],
             'description' => $request['desc'],
         ]);
-        return redirect('customer.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
+        return redirect('/customer')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -97,7 +97,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         customer::find($id)->delete();
-        return redirect('customer.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+        return redirect('/customer')->with('success', 'مطلب شما با موفقیت حذف شد');
 
     }
 
@@ -105,7 +105,10 @@ class CustomerController extends Controller
 
     {
 
-        return Datatables::of(customer::query())->make(true);
+        return Datatables::of(customer::query())
+            ->editColumn('edit', 'datatable.editCustomer')
+            ->rawColumns(['edit', 'edit'])
+            ->make(true);
 
     }
 }

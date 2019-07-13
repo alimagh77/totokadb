@@ -10,13 +10,21 @@
 </head>
 <body>
 <div class="container">
-    <h2>جلسات</h2>
+    <div class="row">
+        <a class="btn btn-info btn-sm" href="/meeting/create" >ایجاد جلسه</a>
+        <a class="btn btn-info btn-sm" href="/" >خانه</a>
+
+    </div>
+</div>
+<div class="container">
+    <h2>محصولات</h2>
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
             <th>Id</th>
             <th>موضوع</th>
-            <th>تاریخ</th>
+            <th>اعضا</th>
+
         </tr>
         </thead>
     </table>
@@ -30,7 +38,8 @@
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'topic', name: 'topic' },
-                { data: 'date', name: 'date' }
+                { data: 'members', name: 'members' },
+
             ]
         });
     });

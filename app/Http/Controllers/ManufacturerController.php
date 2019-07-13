@@ -51,7 +51,7 @@ class ManufacturerController extends Controller
 
         ]);
 
-        return redirect('manufacturer.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return redirect('/manufacturer')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -87,7 +87,7 @@ class ManufacturerController extends Controller
             'size' => $request['size'],
             'description' => $request['desc'],
         ]);
-        return redirect('manufacturer.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
+        return redirect('/manufacturer')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -99,7 +99,7 @@ class ManufacturerController extends Controller
     public function destroy($id)
     {
         manufacturer::find($id)->delete();
-        return redirect('manufacturer.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+        return redirect('/manufacturer')->with('success', 'مطلب شما با موفقیت حذف شد');
 
     }
 
@@ -107,7 +107,10 @@ class ManufacturerController extends Controller
 
     {
 
-        return Datatables::of(manufacturer::query())->make(true);
+        return Datatables::of(manufacturer::query())
+            ->editColumn('edit', 'datatable.editManufacturer')
+            ->rawColumns(['edit', 'edit'])
+            ->make(true);
 
     }
 }

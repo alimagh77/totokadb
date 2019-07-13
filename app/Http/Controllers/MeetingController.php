@@ -48,7 +48,7 @@ class MeetingController extends Controller
 
         ]);
 
-        return redirect('meeting.create')->with('success', 'مطلب شما با موفقیت ثبت شد');
+        return redirect('/meeting')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
     /**
@@ -81,7 +81,7 @@ class MeetingController extends Controller
             'members' => $request['members'],
             'description' => $request['desc'],
         ]);
-        return redirect('meeting.edit')->with('success', 'مطلب شما با موفقیت ویرایش شد');
+        return redirect('/meeting')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }
 
     /**
@@ -93,7 +93,7 @@ class MeetingController extends Controller
     public function destroy($id)
     {
         meeting::find($id)->delete();
-        return redirect('meeting.index')->with('success', 'مطلب شما با موفقیت حذف شد');
+        return redirect('/meeting')->with('success', 'مطلب شما با موفقیت حذف شد');
 
     }
 
@@ -101,7 +101,10 @@ class MeetingController extends Controller
 
     {
 
-        return Datatables::of(meeting::query())->make(true);
+        return Datatables::of(meeting::query())
+            ->editColumn('edit', 'datatable.editMeeting')
+            ->rawColumns(['edit', 'edit'])
 
+            ->make(true);
     }
 }

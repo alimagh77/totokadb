@@ -10,6 +10,13 @@
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <a class="btn btn-info btn-sm" href="/product/create" >ایجاد محصول</a>
+        <a class="btn btn-info btn-sm" href="/" >خانه</a>
+
+    </div>
+</div>
+<div class="container">
     <h2>محصولات</h2>
     <table class="table table-bordered" id="table">
         <thead>
@@ -18,6 +25,7 @@
             <th>دسته بندی</th>
             <th>رنگ بندی</th>
             <th>تولید کننده ها</th>
+            <th>ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -33,6 +41,8 @@
                 { data: 'category', name: 'category' },
                 { data: 'color', name: 'color' },
                 { data: 'manufacturers', name: 'manufacturers' },
+                { data: 'edit', name: 'edit' },
+
             ]
         });
     });
