@@ -41,9 +41,9 @@ class CustomerController extends Controller
 
         customer::create([
             'name' => $request['name'],
-            'birthDate' => $request['birth'],
+            'use' => $request['use'],
             'address' => $request['address'],
-            'mobile' => $request['mobile'],
+            'pos' => $request['pos'],
             'phone' => $request['phone'],
             'job' => $request['job'],
             'description' => $request['desc'],
@@ -78,9 +78,9 @@ class CustomerController extends Controller
         $customer=customer::find($id);
         $customer->update([
             'name' => $request['name'],
-            'birthDate' => $request['birth'],
+            'pos' => $request['pos'],
             'address' => $request['address'],
-            'mobile' => $request['mobile'],
+            'use' => $request['use'],
             'phone' => $request['phone'],
             'job' => $request['job'],
             'description' => $request['desc'],

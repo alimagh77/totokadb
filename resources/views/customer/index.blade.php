@@ -21,10 +21,9 @@
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th width="100px">تاریخ ثبت</th>
             <th>نام</th>
-            <th>صنف</th>
-            <th>تلفن همراه</th>
+            <th>حوزه فعالیت</th>
             <th>ویرایش</th>
         </tr>
         </thead>
@@ -37,10 +36,9 @@
             serverSide: true,
             ajax: '{{ url('customer/data') }}',
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'name', name: 'name' },
                 { data: 'job', name: 'job' },
-                { data: 'mobile', name: 'mobile' },
                 { data: 'edit', name: 'edit',"searchable":false },
             ]
         });

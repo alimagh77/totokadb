@@ -41,6 +41,11 @@ class CompanyController extends Controller
 
         company::create([
             'name'=>$request['name'],
+            'date'=>$request['support'],
+            'partner'=>$request['partner'],
+            'founder'=>$request['founder'],
+            'service'=>$request['service'],
+            'support'=>$request['support'],
             'realm'=>$request['realm'],
             'phone'=>$request['phone'],
             'mobile'=>$request['mobile'],
@@ -73,7 +78,7 @@ class CompanyController extends Controller
     {
 
         $company = company::find($id);
-        return View('company.edit', ['company' => $company,]);
+        return View('company.edit', ['company' => $company]);
     }
 
     /**
@@ -88,6 +93,11 @@ class CompanyController extends Controller
         $company=company::find($id);
         $company->update([
             'name'=>$request['name'],
+            'date'=>$request['support'],
+            'partner'=>$request['partner'],
+            'founder'=>$request['founder'],
+            'service'=>$request['service'],
+            'support'=>$request['support'],
             'realm'=>$request['realm'],
             'phone'=>$request['phone'],
             'mobile'=>$request['mobile'],

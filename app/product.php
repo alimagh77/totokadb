@@ -8,6 +8,6 @@ class product extends Model
 {
     protected $table='products';
 
-    protected $fillable = ['id','category','categoryDetails','manufacturers','details','color','description'];
+    protected $fillable = ['id','category','categoryDetails','manufacturers','details','color','description','image','quality','value','use','pack','valueEco','ability','capacity','supplies'];
 
 }

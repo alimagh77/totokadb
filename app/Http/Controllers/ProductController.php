@@ -37,17 +37,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $product=new product();
 
-        product::create([
-            'category' => $request['category'],
-            'categoryDetails' => $request['categoryDetails'],
-            'manufacturers' => $request['manufacturer'],
-            'details' => $request['details'],
-            'color' => $request['color'],
-            'description' => $request['desc'],
 
-        ]);
+        $product->category = $request->category;
+        $product->categoryDetails = $request->categoryDetails;
+        $product->manufacturers = $request->manufacturers;
+        $product->details = $request->details;
+        $product->color = $request->color;
+        $product->quality = $request->quality;
+        $product->value = $request->value;
+        $product->use = $request->use;
+        $product->pack = $request->pack;
+        $product->valueEco = $request->valueEco;
+        $product->ability = $request->ability;
+        $product->capacity = $request->capacity;
+        $product->supplies = $request->supplies;
+        $product->description = $request->desc;
+        $product->save();
+        if ($request->file('image')!=null) {
+            $imageName = 'productImage' . $product->id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('imageProduct'), $imageName);
 
+            $product->image = $imageName;
+
+            $product->save();
+        }
         return view('product.index')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
 
@@ -74,10 +89,24 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = product::find($id);
+        $imageName='';
+        if ($request->file('image')!=null) {
+            $imageName = 'productImage' . $id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('productMeeting'), $imageName);
+        }
         $product->update([
             'category' => $request['category'],
+            'value' => $request['value'],
+            'image' => $imageName,
+            'quality' => $request['quality'],
+            'use' => $request['use'],
+            'pack' => $request['pack'],
+            'valueEco' => $request['valueEco'],
+            'ability' => $request['ability'],
+            'capacity' => $request['capacity'],
+            'supplies' => $request['supplies'],
             'categoryDetails' => $request['categoryDetails'],
-            'manufacturers' => $request['manufacturer'],
+            'manufacturers' => $request['manufacturers'],
             'details' => $request['details'],
             'color' => $request['color'],
             'description' => $request['desc'],

@@ -8,5 +8,5 @@ class meeting extends Model
 {
     protected $table='meetings';
 
-    protected $fillable = ['id','topic','keyPoints','date','members','description'];
+    protected $fillable = ['id','topic','keyPoints','date','members','image','file','description'];
 }

@@ -39,14 +39,26 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
 
-        meeting::create([
-            'topic' => $request['topic'],
-            'keyPoints' => $request['birth'],
-            'date' => $request['date'],
-            'members' => $request['members'],
-            'description' => $request['desc'],
+        $meeting=new meeting();
 
-        ]);
+
+        $meeting->topic = $request->topic;
+        $meeting->keyPoints = $request->key;
+        $meeting->date = $request->date;
+        $meeting->members = $request->members;
+        $meeting->description = $request->desc;
+        $meeting->save();
+
+        $imageName='meetingImage'.$meeting->id.'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('imageMeeting'),$imageName);
+
+        $fileName='meetingFile'.$meeting->id.'.'.$request->file('file')->getClientOriginalExtension();
+        $request->file('file')->move(public_path('imageMeeting'),$fileName);
+
+        $meeting->image=$imageName;
+        $meeting->file=$fileName;
+        $meeting->save();
+
 
         return redirect('/meeting')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
@@ -74,12 +86,21 @@ class MeetingController extends Controller
     public function update(Request $request, $id)
     {
         $meeting = meeting::find($id);
+
+        $imageName='meetingImage'.$id.'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(public_path('imageMeeting'),$imageName);
+
+        $fileName='meetingFile'.$id.'.'.$request->file('file')->getClientOriginalExtension();
+        $request->file('file')->move(public_path('imageMeeting'),$fileName);
+
         $meeting->update([
             'topic' => $request['topic'],
             'keyPoints' => $request['key'],
             'data' => $request['date'],
             'members' => $request['members'],
             'description' => $request['desc'],
+            'image' => $imageName,
+            'file' => $fileName
         ]);
         return redirect('/meeting')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }

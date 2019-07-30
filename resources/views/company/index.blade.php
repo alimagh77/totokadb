@@ -21,7 +21,7 @@
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th width="100px">تاریخ ثبت</th>
             <th>نام</th>
             <th>وبسایت</th>
             <th>حوزه کاری</th>
@@ -37,7 +37,7 @@
             serverSide: true,
             ajax: '{{ url('company/data') }}',
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'name', name: 'name' },
                 { data: 'website', name: 'website' },
                 { data: 'realm', name: 'realm' },

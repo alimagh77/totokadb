@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{route('editMeeting',$meeting->id)}}" class="form" method="post">
+    <form action="{{route('editMeeting',$meeting->id)}}" class="form" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="card-block">
@@ -33,6 +33,29 @@
                     <label for="basicTextarea">توضیحات:</label>
                     <textarea class="form-control" id="basicTextarea" rows="3" name="desc">{{$meeting->description}}</textarea>
                 </fieldset>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <label for="basicInput">عکس :</label>
+                            <br>
+                            <img width="500px" src="/imageMeeting/{{$meeting->image}}">
+                            <br>
+                            <br>
+                            <input type="file" class="form-control" id="image" name="image" >
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <label for="basicInput">پیوست :</label>
+                            <br>
+                            <br>
+                            <a class="download" href="/imageMeeting/{{$meeting->file}}">فایل حال حاضر</a>
+                            <br>
+                            <br>
+                            <input type="file" class="form-control" id="file" name="file">
+                        </fieldset>
+                    </div>
+                </div>
             </div>
         </div>
 

@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 Auth::routes(['register' => false]);
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/company','CompanyController@index')->middleware('auth');
@@ -41,6 +42,14 @@ Route::get('/meeting/edit/{id}','MeetingController@edit')->middleware('auth');
 Route::post('/meeting/edit/{id}','MeetingController@update')->name('editMeeting')->middleware('auth');
 Route::post('/meeting/destroy/{id}','MeetingController@destroy')->middleware('auth');
 Route::get('/meeting/data','MeetingController@getData')->middleware('auth');
+//
+Route::get('/article','ArticleController@index')->middleware('auth');
+Route::post('/article','ArticleController@store')->middleware('auth');
+Route::get('/article/create','ArticleController@create')->middleware('auth');
+Route::get('/article/edit/{id}','ArticleController@edit')->middleware('auth');
+Route::post('/article/edit/{id}','ArticleController@update')->name('editArticle')->middleware('auth');
+Route::post('/article/destroy/{id}','ArticleController@destroy')->middleware('auth');
+Route::get('/article/data','ArticleController@getData')->middleware('auth');
 //
 Route::get('/product','ProductController@index')->middleware('auth');
 Route::post('/product','ProductController@store')->middleware('auth');

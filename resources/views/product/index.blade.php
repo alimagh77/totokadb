@@ -21,9 +21,9 @@
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th width="100px">تاریخ ثبت</th>
+            <th>نام محصول</th>
             <th>دسته بندی</th>
-            <th>رنگ بندی</th>
             <th>تولید کننده ها</th>
             <th>ویرایش</th>
         </tr>
@@ -37,9 +37,9 @@
             serverSide: true,
             ajax: '{{ url('product/data') }}',
             columns: [
-                { data: 'id', name: 'id' },
-                { data: 'category', name: 'category' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'color', name: 'color' },
+                { data: 'category', name: 'category' },
                 { data: 'manufacturers', name: 'manufacturers' },
                 { data: 'edit', name: 'edit',"searchable":false },
 

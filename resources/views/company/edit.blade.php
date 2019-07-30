@@ -6,45 +6,70 @@
         <div class="card-body">
             <div class="card-block">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1 text-sm-right">
                         <fieldset class="form-group">
                             <label for="basicInput">نام :</label>
-                            <input type="text" value="{{$company->name}}" class="form-control" id="basicInput" name="name" >
+                            <input type="text" value="{{$company->name}}" class="form-control text-md-right" id="basicInput" name="name" >
                         </fieldset>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1 text-sm-right">
                         <fieldset class="form-group">
                             <label for="basicInput">وبسایت :</label>
-                            <input type="text" value="{{$company->website}}" class="form-control" id="basicInput" name="web">
+                            <input type="text" value="{{$company->website}}" class="form-control text-md-right" id="basicInput" name="web">
+                        </fieldset>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1 text-sm-right">
+                        <fieldset class="form-group">
+                            <label for="basicInput">: تاریخ آغاز به کار</label>
+                            <input type="text" value="{{$company->date}}" class="form-control text-md-right" id="basicInput" name="date" >
                         </fieldset>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                        <fieldset class="form-group">
-                            <label for="basicInput">تلفن ثابت :</label>
-                            <input type="text" value="{{$company->phone}}" class="form-control" id="basicInput" name="phone" >
-                        </fieldset>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                        <fieldset class="form-group">
-                            <label for="basicInput">تلفن همراه :</label>
-                            <input type="text" value="{{$company->mobile}}" class="form-control" id="basicInput" name="mobile">
-                        </fieldset>
-                    </div>
-                </div>
-                <fieldset class="form-group">
-                    <label for="basicTextarea">حوزه فعالیت :</label>
-                    <textarea class="form-control" id="basicTextarea" rows="3" name="realm">{{$company->realm}}</textarea>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: حوزه فعالیت</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="realm">{{$company->realm}}</textarea>
+                </fieldset>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: نقاط ضعف و قوت</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="mobile">{{$company->mobile}}</textarea>
                 </fieldset>
                 <hr>
-                <fieldset class="form-group">
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: بنیانگذاران</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="founder">{{$company->founder}}</textarea>
+                </fieldset>
+                <hr>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: همکاری با</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="partner">{{$company->partner}}</textarea>
+                </fieldset>
+                <hr>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: حمایت شده توسط</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="phone">{{$company->support}}</textarea>
+                </fieldset>
+                <hr>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: خدمت به</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="support">{{$company->service}}</textarea>
+                </fieldset>
+                <hr>
+                <fieldset class="form-group text-sm-right">
+                    <label for="basicTextarea">: تلفن ها</label>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="support">{{$company->phone}}</textarea>
+                </fieldset>
+                <hr>
+                <fieldset class="form-group text-sm-right">
                     <label for="basicTextarea">توضیحات :</label>
-                    <textarea class="form-control" id="basicTextarea" rows="3" name="desc">{{$company->description}}</textarea>
+                    <textarea class="form-control text-md-right" id="basicTextarea" rows="3" name="desc">{{$company->description}}</textarea>
                 </fieldset>
             </div>
         </div>
 
+        <button type="submit" class="btn mr-1 btn-round btn-success left" >
+            ذخیره
+        </button>
+    </form>
         <button type="submit" class="btn mr-1 btn-round btn-success left" >
             ذخیره
         </button>

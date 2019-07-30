@@ -11,17 +11,17 @@
 <body>
 <div class="container">
     <div class="row">
-        <a class="btn btn-info btn-sm" href="/meeting/create" >ایجاد جلسه</a>
+        <a class="btn btn-info btn-sm" href="/article/create" >ایجاد جلسه</a>
         <a class="btn btn-info btn-sm" href="/" >خانه</a>
 
     </div>
 </div>
 <div class="container">
-    <h2>محصولات</h2>
+    <h2>جلسات</h2>
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th>Id</th>
+            <th>تاریخ</th>
             <th>موضوع</th>
             <th>اعضا</th>
             <th>ویرایش</th>
@@ -35,9 +35,9 @@
         $('#table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ url('meeting/data') }}',
+            ajax: '{{ url('article/data') }}',
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'date', name: 'date' },
                 { data: 'topic', name: 'topic' },
                 { data: 'members', name: 'members' },
                 { data: 'edit', name: 'edit', "searchable":false },
