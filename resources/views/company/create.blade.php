@@ -8,13 +8,13 @@
                 <div class="row">
                     <div class="col-xl-4 col-lg-6 col-md-12 mb-1 text-sm-right">
                         <fieldset class="form-group">
-                            <label for="basicInput">نام :</label>
+                            <label for="basicInput">: نام</label>
                             <input type="text" class="form-control text-md-right" id="basicInput" name="name" >
                         </fieldset>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-12 mb-1 text-sm-right">
                         <fieldset class="form-group">
-                            <label for="basicInput">وبسایت :</label>
+                            <label for="basicInput">: وبسایت</label>
                             <input type="text" class="form-control text-md-right" id="basicInput" name="web">
                         </fieldset>
                     </div>

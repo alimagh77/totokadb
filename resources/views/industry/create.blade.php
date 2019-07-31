@@ -1,45 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="/meeting" class="form" method="post" enctype="multipart/form-data">
+    <form action="/industry" class="form" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body text-right">
-            <div class="card-block ">
+            <div class="card-block">
                 <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1 ">
+                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                         <fieldset class="form-group">
-                            <label for="basicInput">: موضوع</label>
-                            <input type="text" class="form-control text-right" id="basicInput" name="topic" >
+                            <label for="basicInput">: عنوان</label>
+                            <input type="text" class="form-control text-right" id="basicInput" name="title" >
                         </fieldset>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                         <fieldset class="form-group">
-                            <label for="basicInput">: تاریخ</label>
-                            <input type="text" class="form-control text-right" id="basicInput" name="date">
+                            <label for="basicInput">: کلمات کلیدی</label>
+                            <input type="text" class="form-control text-right" id="basicInput" name="keys">
                         </fieldset>
                     </div>
                 </div>
                 <fieldset class="form-group">
-                    <label for="basicTextarea">: کلمات کلیدی</label>
-                    <textarea class="form-control text-right" id="basicTextarea" rows="3" name="key"></textarea>
-                </fieldset>
-                <hr>
-                <fieldset class="form-group">
-                    <label for="basicTextarea">: اعضا</label>
-                    <textarea class="form-control text-right" id="basicTextarea" rows="3" name="members"></textarea>
+                    <label for="basicTextarea">: شرح مختصر</label>
+                    <textarea class="form-control text-right" id="basicTextarea" rows="3" name="explain"></textarea>
                 </fieldset>
                 <hr>
                 <fieldset class="form-group">
                     <label for="basicTextarea">: توضیحات</label>
                     <textarea class="form-control text-right" id="basicTextarea" rows="3" name="desc"></textarea>
                 </fieldset>
+                <hr>
                 <div class="row justify-content-center">
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                        <fieldset class="form-group">
-                            <label for="basicInput">: عکس</label>
-                            <input type="file" class="form-control" id="image" name="image" >
-                        </fieldset>
-                    </div>
                     <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                         <fieldset class="form-group">
                             <label for="basicInput">: پیوست</label>
@@ -50,7 +40,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn mr-1 btn-round btn-success left" >
+        <button type="submit" class="btn mr-1 btn-round btn-success left " >
             ذخیره
         </button>
     </form>

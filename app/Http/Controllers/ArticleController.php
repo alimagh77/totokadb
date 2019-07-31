@@ -47,13 +47,15 @@ class ArticleController extends Controller
         $article->description = $request->desc;
         $article->save();
 
+        if ($request->file('file')!=null) {
 
-        $fileName='articleFile'.$article->id.'.'.$request->file('file')->getClientOriginalExtension();
-        $request->file('file')->move(public_path('imageArticle'),$fileName);
 
-        $article->file = $fileName;
-        $article->save();
+            $fileName = 'articleFile' . $article->id . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file('file')->move(public_path('imageArticle'), $fileName);
 
+            $article->file = $fileName;
+            $article->save();
+        }
 
         return redirect('/article')->with('success', 'مطلب شما با موفقیت ثبت شد');
     }
@@ -82,16 +84,18 @@ class ArticleController extends Controller
     {
         $article = article::find($id);
 
-        $fileName='meetingFile'.$id.'.'.$request->file('file')->getClientOriginalExtension();
-        $request->file('file')->move(public_path('imageMeeting'),$fileName);
-
-
+        if ($request->file('file')!=null) {
+            $fileName = 'articleFile' . $id . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file('file')->move(public_path('imageArticle'), $fileName);
+            $article->update([
+               'file'=>$fileName
+            ]);
+        }
         $article->update([
             'title' => $request['title'],
             'keys' => $request['keys'],
             'explain' => $request['explain'],
             'description' => $request['desc'],
-            'file' => $fileName
         ]);
 
         return redirect('/article')->with('success', 'مطلب شما با موفقیت ویرایش شد');

@@ -87,7 +87,7 @@
                 <div class="links">
                     <a href="/product">محصولات</a>
                     <a href="/customer">فرصت ها</a>
-                    <a href="/article">جلسات</a>
+                    <a href="/meeting">جلسات</a>
                     <a href="/manufacturer">تولیدی ها</a>
                     <a href="/company">شرکت ها</a>
                     <a href="/article">مقالات</a>

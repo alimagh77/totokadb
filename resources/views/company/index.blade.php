@@ -18,14 +18,16 @@
 </div>
 <div class="container">
     <h2>شرکت ها</h2>
-    <table class="table table-bordered" id="table">
+    <table class="table table-bordered text-right" id="table">
         <thead>
         <tr>
-            <th width="100px">تاریخ ثبت</th>
-            <th>نام</th>
-            <th>وبسایت</th>
-            <th>حوزه کاری</th>
-            <th>ویرایش</th>
+            <th width="58px">تاریخ ثبت</th>
+            <th width="60px" class="text-right">نام</th>
+            <th class="text-right">حوزه فعالیت</th>
+            <th class="text-right">بنیانگذاران</th>
+            <th class="text-right">حمایت شده ی</th>
+            <th class="text-right">همکاری با</th>
+            <th width="30px">ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -39,9 +41,11 @@
             columns: [
                 { data: 'created_at', name: 'created_at' },
                 { data: 'name', name: 'name' },
-                { data: 'website', name: 'website' },
                 { data: 'realm', name: 'realm' },
-                { data: 'edit', name: 'realm',"searchable":false },
+                { data: 'founder', name: 'founder' },
+                { data: 'support', name: 'support' },
+                { data: 'partner', name: 'partner' },
+                { data: 'edit', name: 'edit',"searchable":false },
             ]
         });
     });

@@ -16,15 +16,20 @@
 
     </div>
 </div>
-<div class="container">
+<div class="container text-right">
     <h2>محصولات</h2>
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th width="100px">تاریخ ثبت</th>
+            <th width="60px">تاریخ ثبت</th>
             <th>نام محصول</th>
             <th>دسته بندی</th>
-            <th>تولید کننده ها</th>
+            <th>تولید کننده</th>
+            <th>استفاده</th>
+            <th>ملزومات</th>
+            <th>جزئیات</th>
+            <th width="30px">ارزش اقتصادی</th>
+            <th width="30px">کیفیت</th>
             <th>ویرایش</th>
         </tr>
         </thead>
@@ -41,6 +46,11 @@
                 { data: 'color', name: 'color' },
                 { data: 'category', name: 'category' },
                 { data: 'manufacturers', name: 'manufacturers' },
+                { data: 'use', name: 'use' },
+                { data: 'supplies', name: 'supplies' },
+                { data: 'details', name: 'details' },
+                { data: 'value', name: 'value' },
+                { data: 'quality', name: 'quality' },
                 { data: 'edit', name: 'edit',"searchable":false },
 
             ]

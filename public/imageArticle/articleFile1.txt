@@ -1,6 +1,0 @@
-new project:
-    laravel new blog
-local server:
-    php artisan serve
-new controller:
-    php artisan make:controller name

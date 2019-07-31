@@ -11,22 +11,19 @@
 <body>
 <div class="container">
     <div class="row">
-        <a class="btn btn-info btn-sm" href="/meeting/create" >ایجاد جلسه</a>
+        <a class="btn btn-info btn-sm" href="/article/create" >ایجاد مقاله</a>
         <a class="btn btn-info btn-sm" href="/" >خانه</a>
 
     </div>
 </div>
 <div class="container">
-    <h2 class="text-right">جلسات</h2>
+    <h2 class="text-right">صنایع</h2>
     <table class="table table-bordered text-right" id="table">
         <thead>
         <tr>
-            <th width="60px" class="text-right">تاریخ</th>
-            <th class="text-right">موضوع</th>
-            <th class="text-right">اعضا</th>
-            <th class="text-right">کلمات کلیدی</th>
-            <th width="40px">ویرایش</th>
-
+            <th width="58px" class="text-right">تاریخ ثبت</th>
+            <th width="100px" class="text-right">نام</th>
+            <th width="30px">ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -36,12 +33,12 @@
         $('#table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ url('meeting/data') }}',
+            ajax: '{{ url('article/data') }}',
             columns: [
-                { data: 'date', name: 'date' },
-                { data: 'topic', name: 'topic' },
-                { data: 'members', name: 'members' },
-                { data: 'keyPoints', name: 'keyPoints' },
+                { data: 'created_at', name: 'created_at',"searchable":false },
+                { data: 'title', name: 'title' },
+                { data: 'keys', name: 'keys' },
+                { data: 'explain', name: 'explain' },
                 { data: 'edit', name: 'edit', "searchable":false },
 
             ]

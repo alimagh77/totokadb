@@ -39,7 +39,7 @@ class MeetingController extends Controller
     public function store(Request $request)
     {
 
-        $meeting=new meeting();
+        $meeting = new meeting();
 
 
         $meeting->topic = $request->topic;
@@ -47,16 +47,22 @@ class MeetingController extends Controller
         $meeting->date = $request->date;
         $meeting->members = $request->members;
         $meeting->description = $request->desc;
-        $meeting->save();
 
-        $imageName='meetingImage'.$meeting->id.'.'.$request->file('image')->getClientOriginalExtension();
-        $request->file('image')->move(public_path('imageMeeting'),$imageName);
 
-        $fileName='meetingFile'.$meeting->id.'.'.$request->file('file')->getClientOriginalExtension();
-        $request->file('file')->move(public_path('imageMeeting'),$fileName);
 
-        $meeting->image=$imageName;
-        $meeting->file=$fileName;
+        if ($request->file('image') != null) {
+
+            $imageName = 'meetingImage' . $meeting->id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('imageMeeting'), $imageName);
+            $meeting->image = $imageName;
+        }
+
+        if ($request->file('file')!=null) {
+            $fileName = 'meetingFile' . $meeting->id . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file('file')->move(public_path('imageMeeting'), $fileName);
+            $meeting->file = $fileName;
+        }
+
         $meeting->save();
 
 
@@ -86,21 +92,26 @@ class MeetingController extends Controller
     public function update(Request $request, $id)
     {
         $meeting = meeting::find($id);
-
-        $imageName='meetingImage'.$id.'.'.$request->file('image')->getClientOriginalExtension();
-        $request->file('image')->move(public_path('imageMeeting'),$imageName);
-
-        $fileName='meetingFile'.$id.'.'.$request->file('file')->getClientOriginalExtension();
-        $request->file('file')->move(public_path('imageMeeting'),$fileName);
-
+        if ($request->file('image')!=null) {
+            $imageName = 'meetingImage' . $id . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('imageMeeting'), $imageName);
+            $meeting->update([
+                'image' => $imageName
+            ]);
+        }
+        if ($request->file('file')!=null) {
+            $fileName = 'meetingFile' . $id . '.' . $request->file('file')->getClientOriginalExtension();
+            $request->file('file')->move(public_path('imageMeeting'), $fileName);
+            $meeting->update([
+                'image' => $fileName
+            ]);
+        }
         $meeting->update([
             'topic' => $request['topic'],
             'keyPoints' => $request['key'],
             'data' => $request['date'],
             'members' => $request['members'],
             'description' => $request['desc'],
-            'image' => $imageName,
-            'file' => $fileName
         ]);
         return redirect('/meeting')->with('success', 'مطلب شما با موفقیت ویرایش شد');
     }

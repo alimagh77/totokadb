@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\industry;
 use App\manufacturer;
+use App\tech;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 
@@ -27,7 +29,10 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-        return view('manufacturer.create');
+        $indu = industry::orderby('id', 'desc')->get();
+        $sub = manufacturer::orderby('id', 'desc')->get();
+        $techn = tech::orderby('id', 'desc')->get();
+        return view('manufacturer.create',['sub'=>$sub,'indu'=>$indu,'techn'=>$techn]);
     }
 
     /**

@@ -11,21 +11,21 @@
 <body>
 <div class="container">
     <div class="row">
-        <a class="btn btn-info btn-sm" href="/article/create" >ایجاد جلسه</a>
+        <a class="btn btn-info btn-sm" href="/article/create" >ایجاد مقاله</a>
         <a class="btn btn-info btn-sm" href="/" >خانه</a>
 
     </div>
 </div>
 <div class="container">
-    <h2>مقالات</h2>
-    <table class="table table-bordered" id="table">
+    <h2 class="text-right">مقالات</h2>
+    <table class="table table-bordered text-right" id="table">
         <thead>
         <tr>
-            <th width="100px">تاریخ ثبت</th>
-            <th>عنوان</th>
-            <th>کلمات کلیدی</th>
-            <th>شرح مختصر</th>
-            <th>ویرایش</th>
+            <th width="58px" class="text-right">تاریخ ثبت</th>
+            <th width="100px" class="text-right">عنوان</th>
+            <th class="text-right">کلمات کلیدی</th>
+            <th class="text-right">شرح مختصر</th>
+            <th width="30px">ویرایش</th>
         </tr>
         </thead>
     </table>

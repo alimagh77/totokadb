@@ -70,10 +70,6 @@
             ذخیره
         </button>
     </form>
-        <button type="submit" class="btn mr-1 btn-round btn-success left" >
-            ذخیره
-        </button>
-    </form>
 @endsection
 
 @section('script')

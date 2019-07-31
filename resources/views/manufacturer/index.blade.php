@@ -16,16 +16,16 @@
 
     </div>
 </div>
-<div class="container">
+<div class="container text-right">
     <h2>تولیدی ها</h2>
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>نام برند</th>
-            <th>حوزه کاری</th>
-            <th>تلفن</th>
-            <th>ویرایش</th>
+            <th width="60px" class="text-right">تاریخ ثبت</th>
+            <th class="text-right">نام برند</th>
+            <th class="text-right">حوزه کاری</th>
+            <th class="text-right">سایز</th>
+            <th width="30px" class="text-right">ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -37,10 +37,10 @@
             serverSide: true,
             ajax: '{{ url('manufacturer/data') }}',
             columns: [
-                { data: 'id', name: 'id' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'brand', name: 'brand' },
                 { data: 'realm', name: 'realm' },
-                { data: 'phone', name: 'phone' },
+                { data: 'size', name: 'size' },
                 { data: 'edit', name: 'edit',"searchable":false },
             ]
         });

@@ -11,20 +11,22 @@
 <body>
 <div class="container">
     <div class="row">
-        <a class="btn btn-info btn-sm" href="/customer/create" >ایجاد مشتری</a>
+        <a class="btn btn-info btn-sm" href="/customer/create" >ایجاد فرصت</a>
         <a class="btn btn-info btn-sm" href="/" >خانه</a>
 
     </div>
 </div>
-<div class="container">
-    <h2>مشتریان</h2>
+<div class="container text-right">
+    <h2>فرصت ها</h2>
     <table class="table table-bordered" id="table">
         <thead>
         <tr>
-            <th width="100px">تاریخ ثبت</th>
-            <th>نام</th>
-            <th>حوزه فعالیت</th>
-            <th>ویرایش</th>
+            <th class="text-right" width="60px ">تاریخ ثبت</th>
+            <th class="text-right">نام</th>
+            <th class="text-right">استفاده</th>
+            <th class="text-right">جایگاه حقوقی</th>
+            <th class="text-right">حوزه فعالیت</th>
+            <th class="text-right" width="40px">ویرایش</th>
         </tr>
         </thead>
     </table>
@@ -36,8 +38,10 @@
             serverSide: true,
             ajax: '{{ url('customer/data') }}',
             columns: [
-                { data: 'created_at', name: 'created_at' },
+                { data: 'created_at', name: 'created_at',"searchable":false },
                 { data: 'name', name: 'name' },
+                { data: 'use', name: 'use' },
+                { data: 'pos', name: 'pos' },
                 { data: 'job', name: 'job' },
                 { data: 'edit', name: 'edit',"searchable":false },
             ]

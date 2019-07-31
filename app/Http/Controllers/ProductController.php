@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\manufacturer;
 use App\product;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $manu = manufacturer::orderby('id','desc')->get();
+        return view('product.create',['manu'=>$manu]);
     }
 
     /**
@@ -74,9 +76,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-
+        $manu = manufacturer::orderby('id','desc')->get();
         $product = product::find($id);
-        return View('product.edit', ['product' => $product]);
+        return View('product.edit', ['product' => $product,'manu'=>$manu]);
     }
 
     /**
