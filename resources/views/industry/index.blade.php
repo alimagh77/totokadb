@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <a class="btn btn-info btn-sm" href="/article/create" >ایجاد مقاله</a>
+        <a class="btn btn-info btn-sm" href="/industry/create" >ایجاد صنعت</a>
         <a class="btn btn-info btn-sm" href="/" >خانه</a>
 
     </div>
@@ -33,12 +33,10 @@
         $('#table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ url('article/data') }}',
+            ajax: '{{ url('industry/data') }}',
             columns: [
                 { data: 'created_at', name: 'created_at',"searchable":false },
-                { data: 'title', name: 'title' },
-                { data: 'keys', name: 'keys' },
-                { data: 'explain', name: 'explain' },
+                { data: 'name', name: 'name' },
                 { data: 'edit', name: 'edit', "searchable":false },
 
             ]

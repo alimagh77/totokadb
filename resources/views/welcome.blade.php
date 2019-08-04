@@ -81,16 +81,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Totoka
+                    توتوکا
                 </div>
 
                 <div class="links">
-                    <a href="/product">محصولات</a>
-                    <a href="/customer">فرصت ها</a>
-                    <a href="/meeting">جلسات</a>
-                    <a href="/manufacturer">تولیدی ها</a>
-                    <a href="/company">شرکت ها</a>
-                    <a href="/article">مقالات</a>
+                    <a href="/prov">تدارکات</a>
+                    <a href="/research">پژوهشی</a>
+                    <a href="/">روابط عمومی</a>
                 </div>
             </div>
         </div>

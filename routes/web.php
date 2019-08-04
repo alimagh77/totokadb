@@ -13,11 +13,19 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
+Route::get('/research', function () {
+    return view('research');
+})->middleware('auth');
+Route::get('/prov', function () {
+    return view('prov');
+})->middleware('auth');
 Auth::routes(['register' => false]);
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/home','HomeController@index')->middleware('auth');
+
 
 Route::get('/company','CompanyController@index')->middleware('auth');
 Route::post('/company','CompanyController@store')->middleware('auth');
@@ -55,7 +63,7 @@ Route::get('/tech','TechController@index')->middleware('auth');
 Route::post('/tech','TechController@store')->middleware('auth');
 Route::get('/tech/create','TechController@create')->middleware('auth');
 Route::get('/tech/edit/{id}','TechController@edit')->middleware('auth');
-Route::post('/tech/edit/{id}','TechController@update')->name('editArticle')->middleware('auth');
+Route::post('/tech/edit/{id}','TechController@update')->name('editTech')->middleware('auth');
 Route::post('/tech/destroy/{id}','TechController@destroy')->middleware('auth');
 Route::get('/tech/data','TechController@getData')->middleware('auth');
 //
@@ -63,7 +71,7 @@ Route::get('/industry','IndustryController@index')->middleware('auth');
 Route::post('/industry','IndustryController@store')->middleware('auth');
 Route::get('/industry/create','IndustryController@create')->middleware('auth');
 Route::get('/industry/edit/{id}','IndustryController@edit')->middleware('auth');
-Route::post('/industry/edit/{id}','IndustryController@update')->name('editArticle')->middleware('auth');
+Route::post('/industry/edit/{id}','IndustryController@update')->name('editIndustry')->middleware('auth');
 Route::post('/industry/destroy/{id}','IndustryController@destroy')->middleware('auth');
 Route::get('/industry/data','IndustryController@getData')->middleware('auth');
 //
@@ -82,6 +90,53 @@ Route::get('/manufacturer/edit/{id}','ManufacturerController@edit')->middleware(
 Route::post('/manufacturer/edit/{id}','ManufacturerController@update')->name('editManufacturer')->middleware('auth');
 Route::post('/manufacturer/destroy/{id}','ManufacturerController@destroy')->middleware('auth');
 Route::get('/manufacturer/data','ManufacturerController@getData')->middleware('auth');
-
+//
+Route::get('/file','FileController@index')->middleware('auth');
+Route::post('/file','FileController@store')->middleware('auth');
+Route::get('/file/create','FileController@create')->middleware('auth');
+Route::get('/file/edit/{id}','FileController@edit')->middleware('auth');
+Route::post('/file/edit/{id}','FileController@update')->name('editFile')->middleware('auth');
+Route::post('/file/destroy/{id}','FileController@destroy')->middleware('auth');
+Route::get('/file/data','FileController@getData')->middleware('auth');
+//
+Route::get('/price','PriceController@index')->middleware('auth');
+Route::post('/price','PriceController@store')->middleware('auth');
+Route::get('/price/create','PriceController@create')->middleware('auth');
+Route::get('/price/edit/{id}','PriceController@edit')->middleware('auth');
+Route::post('/price/edit/{id}','PriceController@update')->name('editPrice')->middleware('auth');
+Route::post('/price/destroy/{id}','PriceController@destroy')->middleware('auth');
+Route::get('/price/data','PriceController@getData')->middleware('auth');
+//
+Route::get('/suggest','SuggestController@index')->middleware('auth');
+Route::post('/suggest','SuggestController@store')->middleware('auth');
+Route::get('/suggest/create','SuggestController@create')->middleware('auth');
+Route::get('/suggest/edit/{id}','SuggestController@edit')->middleware('auth');
+Route::post('/suggest/edit/{id}','SuggestController@update')->name('editSuggest')->middleware('auth');
+Route::post('/suggest/destroy/{id}','SuggestController@destroy')->middleware('auth');
+Route::get('/suggest/data','SuggestController@getData')->middleware('auth');
+//
+Route::get('/send','SendController@index')->middleware('auth');
+Route::post('/send','SendController@store')->middleware('auth');
+Route::get('/send/create','SendController@create')->middleware('auth');
+Route::get('/send/edit/{id}','SendController@edit')->middleware('auth');
+Route::post('/send/edit/{id}','SendController@update')->name('editSend')->middleware('auth');
+Route::post('/send/destroy/{id}','SendController@destroy')->middleware('auth');
+Route::get('/send/data','SendController@getData')->middleware('auth');
+//
+Route::get('/req','RequestController@index')->middleware('auth');
+Route::post('/req','RequestController@store')->middleware('auth');
+Route::get('/req/create','RequestController@create')->middleware('auth');
+Route::get('/req/edit/{id}','RequestController@edit')->middleware('auth');
+Route::post('/req/edit/{id}','RequestController@update')->name('editReq')->middleware('auth');
+Route::post('/req/destroy/{id}','RequestController@destroy')->middleware('auth');
+Route::get('/req/data','RequestController@getData')->middleware('auth');
+//
+Route::get('/factor','FactorController@index')->middleware('auth');
+Route::post('/factor','FactorController@store')->middleware('auth');
+Route::get('/factor/create','FactorController@create')->middleware('auth');
+Route::get('/factor/edit/{id}','FactorController@edit')->middleware('auth');
+Route::post('/factor/edit/{id}','FactorController@update')->name('editFactor')->middleware('auth');
+Route::post('/factor/destroy/{id}','FactorController@destroy')->middleware('auth');
+Route::get('/factor/data','FactorController@getData')->middleware('auth');
 
 

@@ -1,45 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{route('editArticle',$article->id)}}" class="form" method="post" enctype="multipart/form-data">
+    <form action="{{route('editIndustry',$industry->id)}}" class="form" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="card-body">
+        <div class="card-body text-right">
             <div class="card-block">
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
                         <fieldset class="form-group">
                             <label for="basicInput">عنوان :</label>
-                            <input type="text" value="{{$article->title}}" class="form-control" id="basicInput" name="title" >
-                        </fieldset>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                        <fieldset class="form-group">
-                            <label for="basicInput">کلمات کلیدی :</label>
-                            <input type="text" value="{{$article->keys}}" class="form-control" id="basicInput" name="keys">
-                        </fieldset>
-                    </div>
-                </div>
-                <fieldset class="form-group">
-                    <label for="basicTextarea">شرح مختصر :</label>
-                    <textarea class="form-control" id="basicTextarea" rows="3" name="members">{{$article->explain}}</textarea>
-                </fieldset>
-                <hr>
-                <fieldset class="form-group">
-                    <label for="basicTextarea">توضیحات :</label>
-                    <textarea class="form-control" id="basicTextarea" rows="3" name="desc">{{$article->description}}</textarea>
-                </fieldset>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-12 mb-1">
-                        <fieldset class="form-group">
-                            <label for="basicInput">پیوست :</label>
-                            @if($article->file!==null);
-                                <br>
-                                <br>
-                                <a class="text-decoration-none" href="/imageArticle/{{$article->file}}">فایل حال حاضر</a>
-                                <br>
-                                <br>
-                            @endif
-                            <input type="file" class="form-control" id="file" name="file">
+                            <input type="text" value="{{$industry->name}}" class="form-control" id="basicInput" name="name" >
                         </fieldset>
                     </div>
                 </div>
@@ -50,15 +20,4 @@
             ذخیره
         </button>
     </form>
-@endsection
-
-@section('script')
-
-    <script src="/vendor/unischarp/laravel-ckeditor/ckeditor.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-    <script>
-        $('textarea').ckeditor();
-        // $('.textarea').ckeditor(); // if class is prefered.
-    </script>
-
 @endsection
